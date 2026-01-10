@@ -137,6 +137,57 @@
             text-decoration: underline;
         }
     </style>
+    <script>
+        // GitHub 代理列表（按优先级排序）
+        const PROXIES = [
+            'https://gh-proxy.com/',
+            'https://cf.ghproxy.cc/',
+            'https://gh.ddlc.top/',
+            'https://ghproxy.net/',
+        ];
+        
+        const VERSION = '2.0.0';
+        const GITHUB_PATH = 'https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v' + VERSION + '/HuGeScreenshot-' + VERSION + '.exe';
+        
+        // 测试代理可用性（使用 Image 加载避免 CORS 问题）
+        function testProxy(proxyUrl, timeout = 5000) {
+            return new Promise((resolve) => {
+                const start = Date.now();
+                const img = new Image();
+                const timer = setTimeout(() => {
+                    img.src = '';
+                    resolve({ proxy: proxyUrl, ok: false, time: Infinity });
+                }, timeout);
+                
+                img.onload = img.onerror = () => {
+                    clearTimeout(timer);
+                    // 只要有响应就认为代理可用（即使是 404）
+                    resolve({ proxy: proxyUrl, ok: true, time: Date.now() - start });
+                };
+                
+                // 请求一个小文件测试连通性
+                img.src = proxyUrl + 'https://github.com/favicon.ico?' + Date.now();
+            });
+        }
+        
+        // 选择最快的代理
+        async function selectFastestProxy() {
+            try {
+                const results = await Promise.all(PROXIES.map(p => testProxy(p)));
+                const available = results.filter(r => r.ok).sort((a, b) => a.time - b.time);
+                return available.length > 0 ? available[0].proxy : PROXIES[0];
+            } catch {
+                return PROXIES[0];
+            }
+        }
+        
+        // 页面加载后更新下载链接
+        document.addEventListener('DOMContentLoaded', async () => {
+            const downloadBtn = document.getElementById('download-btn');
+            const fastestProxy = await selectFastestProxy();
+            downloadBtn.href = fastestProxy + GITHUB_PATH;
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -146,7 +197,7 @@
         
         <span class="version">v2.0.0</span>
         
-        <a href="https://mirror.ghproxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.0.0/HuGeScreenshot-2.0.0.exe" class="download-btn">
+        <a id="download-btn" href="https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.0.0/HuGeScreenshot-2.0.0.exe" class="download-btn">
             🚀 立即下载（国内高速）
         </a>
         
@@ -166,7 +217,7 @@
         </div>
         
         <p class="footer">
-            © 2024 虎哥截图 · <a href="https://github.com/wangwingzero/hugescreenshot-releases">GitHub</a>
+            © 2024-2026 虎哥截图 · <a href="https://github.com/wangwingzero/hugescreenshot-releases">GitHub</a>
         </p>
     </div>
 </body>
