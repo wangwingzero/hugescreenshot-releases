@@ -25,7 +25,7 @@
             background: white;
             border-radius: 20px;
             padding: 48px 40px;
-            max-width: 500px;
+            max-width: 520px;
             width: 100%;
             text-align: center;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -59,17 +59,28 @@
             margin-bottom: 24px;
         }
         
+        .download-section {
+            margin-bottom: 24px;
+        }
+        
+        .download-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        
         .download-btn {
             display: block;
             width: 100%;
-            padding: 16px 24px;
+            padding: 14px 20px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
-            border-radius: 12px;
-            font-size: 18px;
+            border-radius: 10px;
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             transition: transform 0.2s, box-shadow 0.2s;
         }
         
@@ -78,9 +89,23 @@
             box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
         
+        .download-btn.mirror {
+            background: #f0f5ff;
+            color: #667eea;
+            font-size: 14px;
+            padding: 12px 16px;
+        }
+        
+        .download-btn.mirror:hover {
+            background: #e0e8ff;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
         .download-btn.secondary {
             background: #f5f5f5;
             color: #666;
+            font-size: 14px;
+            padding: 12px 16px;
         }
         
         .download-btn.secondary:hover {
@@ -90,9 +115,9 @@
         }
         
         .file-info {
-            font-size: 14px;
+            font-size: 13px;
             color: #999;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
         
         .features {
@@ -137,24 +162,6 @@
             text-decoration: underline;
         }
     </style>
-    <script>
-        // GitHub 代理列表（经过验证的可用代理）
-        const PROXIES = [
-            'https://gh-proxy.com/',
-            'https://ghfast.top/',
-            'https://github.moeyy.xyz/',
-        ];
-        
-        const VERSION = '2.0.0';
-        const GITHUB_PATH = 'https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v' + VERSION + '/HuGeScreenshot-' + VERSION + '.exe';
-        
-        // 直接使用第一个代理（已验证可用），避免测试逻辑的不可靠性
-        // 页面加载后设置下载链接
-        document.addEventListener('DOMContentLoaded', () => {
-            const downloadBtn = document.getElementById('download-btn');
-            downloadBtn.href = PROXIES[0] + GITHUB_PATH;
-        });
-    </script>
 </head>
 <body>
     <div class="container">
@@ -164,12 +171,21 @@
         
         <span class="version">v2.0.0</span>
         
-        <a id="download-btn" href="https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.0.0/HuGeScreenshot-2.0.0.exe" class="download-btn">
-            🚀 立即下载（国内高速）
-        </a>
+        <div class="download-section">
+            <div class="download-title">🇨🇳 国内高速下载</div>
+            <a href="https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.0.0/HuGeScreenshot-2.0.0.exe" class="download-btn">
+                🚀 镜像1 · gh-proxy.com
+            </a>
+            <a href="https://ghfast.top/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.0.0/HuGeScreenshot-2.0.0.exe" class="download-btn mirror">
+                ⚡ 镜像2 · ghfast.top
+            </a>
+            <a href="https://github.moeyy.xyz/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.0.0/HuGeScreenshot-2.0.0.exe" class="download-btn mirror">
+                🔗 镜像3 · github.moeyy.xyz
+            </a>
+        </div>
         
         <a href="https://github.com/wangwingzero/hugescreenshot-releases/releases" class="download-btn secondary">
-            GitHub Releases（海外）
+            🌐 GitHub Releases（海外）
         </a>
         
         <p class="file-info">HuGeScreenshot-2.0.0.exe · 约 350MB</p>
