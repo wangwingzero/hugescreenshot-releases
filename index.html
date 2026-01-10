@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虎哥截图 - Windows 桌面截图工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 48px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            font-size: 80px;
+            margin-bottom: 16px;
+        }
+        
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+        
+        .version {
+            display: inline-block;
+            background: #52c41a;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .download-btn.secondary {
+            background: #f5f5f5;
+            color: #666;
+        }
+        
+        .download-btn.secondary:hover {
+            background: #e8e8e8;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .file-info {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 32px;
+        }
+        
+        .features {
+            text-align: left;
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .features-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        
+        .feature-item {
+            font-size: 14px;
+            color: #666;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feature-icon {
+            font-size: 16px;
+        }
+        
+        .footer {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🐯</div>
+        <h1 class="title">虎哥截图</h1>
+        <p class="subtitle">Windows 桌面截图工具，极致的 OCR 体验</p>
+        
+        <span class="version">v2.0.0</span>
+        
+        <a href="https://mirror.ghproxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.0.0/HuGeScreenshot-2.0.0.exe" class="download-btn">
+            🚀 立即下载（国内高速）
+        </a>
+        
+        <a href="https://github.com/wangwingzero/hugescreenshot-releases/releases" class="download-btn secondary">
+            GitHub Releases（海外）
+        </a>
+        
+        <p class="file-info">HuGeScreenshot-2.0.0.exe · 约 350MB</p>
+        
+        <div class="features">
+            <div class="features-title">✨ 核心功能</div>
+            <div class="feature-item"><span class="feature-icon">📸</span> 截图标注 · 贴图功能</div>
+            <div class="feature-item"><span class="feature-icon">🔤</span> OCR 文字识别（本地离线）</div>
+            <div class="feature-item"><span class="feature-icon">🌐</span> 多引擎翻译</div>
+            <div class="feature-item"><span class="feature-icon">📚</span> Anki 制卡</div>
+            <div class="feature-item"><span class="feature-icon">🎬</span> 录屏功能</div>
+        </div>
+        
+        <p class="footer">
+            © 2024 虎哥截图 · <a href="https://github.com/wangwingzero/hugescreenshot-releases">GitHub</a>
+        </p>
+    </div>
+</body>
+</html>
