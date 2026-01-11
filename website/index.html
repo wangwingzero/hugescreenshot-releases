@@ -356,8 +356,8 @@
             color: var(--text-main);
         }
 
-        /* 二维码弹窗 */
-        .qr-modal {
+        /* 反馈弹窗 */
+        .feedback-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -372,11 +372,11 @@
             animation: fadeIn 0.2s ease-out;
         }
 
-        .qr-modal.show {
+        .feedback-modal.show {
             display: flex;
         }
 
-        .qr-modal-content {
+        .feedback-modal-content {
             background: #fff;
             border-radius: 20px;
             padding: 30px;
@@ -386,26 +386,31 @@
             max-width: 320px;
         }
 
-        .qr-modal-content h3 {
+        .feedback-modal-content h3 {
             font-size: 18px;
             margin-bottom: 16px;
             color: var(--text-main);
         }
 
-        .qr-modal-content img {
-            width: 200px;
-            height: 200px;
+        .wechat-id {
+            font-size: 24px;
+            font-weight: 600;
+            color: #07c160;
+            padding: 16px 24px;
+            background: #f0fdf4;
             border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid #bbf7d0;
+            user-select: all;
+            cursor: pointer;
         }
 
-        .qr-modal-content p {
+        .feedback-modal-content p {
             margin-top: 16px;
             font-size: 13px;
             color: var(--text-muted);
         }
 
-        .qr-close-btn {
+        .feedback-close-btn {
             margin-top: 20px;
             padding: 10px 24px;
             background: var(--btn-bg);
@@ -417,7 +422,7 @@
             transition: transform 0.2s;
         }
 
-        .qr-close-btn:hover {
+        .feedback-close-btn:hover {
             transform: scale(1.05);
         }
 
@@ -544,37 +549,40 @@
             <div class="footer-links">
                 <a href="https://github.com/wangwingzero/hugescreenshot-releases" target="_blank">GitHub</a>
                 <span>·</span>
-                <a href="javascript:void(0)" onclick="showQRCode()">反馈问题</a>
+                <a href="javascript:void(0)" onclick="showFeedback()">反馈问题</a>
             </div>
             <p style="margin-top: 12px;">© 2024-2026 虎哥截图 Design. All rights reserved.</p>
         </footer>
 
-        <!-- 二维码弹窗 -->
-        <div class="qr-modal" id="qrModal" onclick="onModalClick(event)">
-            <div class="qr-modal-content" onclick="event.stopPropagation()">
-                <h3>扫码反馈问题</h3>
-                <img src="QRcode.png" alt="反馈二维码">
-                <p>微信扫一扫，添加好友反馈</p>
-                <button class="qr-close-btn" onclick="hideQRCode()">关闭</button>
+        <!-- 反馈弹窗 -->
+        <div class="feedback-modal" id="feedbackModal" onclick="onModalClick(event)">
+            <div class="feedback-modal-content" onclick="event.stopPropagation()">
+                <h3>💬 反馈问题</h3>
+                <div class="wechat-id" onclick="copyWechatId()">wwingzero</div>
+                <p>点击复制微信号，添加好友反馈</p>
+                <button class="feedback-close-btn" onclick="hideFeedback()">关闭</button>
             </div>
         </div>
 
         <script>
-            function showQRCode() {
-                document.getElementById('qrModal').classList.add('show');
+            function showFeedback() {
+                document.getElementById('feedbackModal').classList.add('show');
             }
-            function hideQRCode() {
-                document.getElementById('qrModal').classList.remove('show');
+            function hideFeedback() {
+                document.getElementById('feedbackModal').classList.remove('show');
             }
             function onModalClick(event) {
-                // 只有点击遮罩层（非内容区）才关闭
-                if (event.target === document.getElementById('qrModal')) {
-                    hideQRCode();
+                if (event.target === document.getElementById('feedbackModal')) {
+                    hideFeedback();
                 }
             }
-            // ESC 键关闭
+            function copyWechatId() {
+                navigator.clipboard.writeText('wwingzero').then(function() {
+                    alert('微信号已复制！');
+                });
+            }
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') hideQRCode();
+                if (e.key === 'Escape') hideFeedback();
             });
         </script>
     </div>
