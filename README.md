@@ -81,7 +81,7 @@
 
 | 下载源 | 链接 | 说明 |
 |--------|------|------|
-| 🇨🇳 **国内高速** | [点击下载 v2.1.3](https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.1.3/HuGeScreenshot-2.1.3.exe) | 🚀 推荐，镜像加速 |
+| 🇨🇳 **国内高速** | [点击下载 v2.1.3](https://ghfast.top/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.1.3/HuGeScreenshot-2.1.3.exe) | 🚀 推荐，镜像加速 |
 | 🌐 GitHub | [Releases](https://github.com/wangwingzero/hugescreenshot-releases/releases) | 海外用户 |
 
 下载 `HuGeScreenshot-x.x.x.exe` 即可使用。
