@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="虎哥截图 - Windows 桌面截图工具，提供 OCR 文字识别、多引擎翻译、Anki 制卡、录屏等功能">
+    <meta name="description" content="虎哥飞行空间 - 飞行员的数字工具箱，提供截图工具、飞行计算器、历史学习等实用软件">
     <meta name="theme-color" content="#f8fafc">
-    <title>虎哥截图 - 极致生产力体验</title>
+    <title>虎哥飞行空间 - 飞行员的数字工具箱</title>
     <script>
-        // 检测邮箱确认回调，如果是 signup 类型则跳转到确认页面
-        // 放在 head 中确保在页面渲染前执行
         (function() {
             var hash = window.location.hash;
             if (hash && hash.indexOf('type=signup') !== -1) {
@@ -18,7 +16,6 @@
     </script>
     <style>
         :root {
-            /* 浅色主题变量 */
             --bg-body: #f8fafc;
             --card-bg: rgba(255, 255, 255, 0.65);
             --card-border: rgba(0, 0, 0, 0.06);
@@ -27,7 +24,6 @@
             --text-muted: #64748b;
             --btn-bg: #000000;
             --btn-text: #ffffff;
-            --hover-bg: rgba(0, 0, 0, 0.04);
         }
 
         * {
@@ -45,10 +41,8 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* 背景流光动画 - 浅色版调整为更柔和的色彩 */
         .ambient-light {
             position: fixed;
             top: 0;
@@ -64,7 +58,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
             width: 100%;
@@ -74,18 +68,16 @@
             align-items: center;
         }
 
-        /* 头部设计 */
         header {
             text-align: center;
             margin-top: 40px;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             animation: fadeInDown 0.8s ease-out;
         }
 
         .logo-box {
             width: 96px;
             height: 96px;
-            /* 浅色模式下保持深色 Logo 盒，制造视觉锚点 */
             background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
             border-radius: 24px;
             display: flex;
@@ -93,9 +85,7 @@
             justify-content: center;
             font-size: 48px;
             margin: 0 auto 24px;
-            box-shadow: 
-                0 10px 25px -5px rgba(0, 0, 0, 0.1),
-                0 0 0 1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -111,13 +101,13 @@
         }
 
         h1 {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 800;
             margin-bottom: 12px;
             letter-spacing: -1px;
-            /* 浅色模式下的渐变字 */
             background: linear-gradient(to bottom, #0f172a, #334155);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -126,243 +116,158 @@
             color: var(--text-muted);
             max-width: 600px;
             line-height: 1.6;
-            margin: 0 auto 20px;
+            margin: 0 auto;
         }
 
-        .pill-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 16px;
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 100px;
-            font-size: 13px;
-            color: var(--text-muted);
-            backdrop-filter: blur(10px);
-        }
-
-        .pill-badge span {
-            width: 6px;
-            height: 6px;
-            background-color: #10b981;
-            border-radius: 50%;
-            margin-right: 8px;
-            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
-        }
-
-        /* Bento Grid 布局 */
-        .bento-grid {
+        /* 产品网格 */
+        .products-grid {
             display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
             width: 100%;
             animation: fadeInUp 0.8s ease-out 0.2s backwards;
         }
 
-        @media (max-width: 800px) {
-            .bento-grid {
+        @media (max-width: 900px) {
+            .products-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* 卡片通用样式 */
-        .card {
+        .product-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 24px;
             padding: 30px;
             backdrop-filter: blur(20px);
-            /* 浅色模式下的投影更柔和 */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
-        }
-
-        .card:hover {
-            border-color: rgba(0, 0, 0, 0.1);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
-        }
-
-        /* 左侧下载区域 */
-        .download-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
-        .section-title {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #94a3b8;
-            margin-bottom: 24px;
-            font-weight: 700;
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
         }
 
-        .primary-btn {
+        .product-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .product-icon.screenshot { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+        .product-icon.flight { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .product-icon.history { background: linear-gradient(135deg, #10b981, #059669); }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .product-platform {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            padding: 4px 10px;
+            background: rgba(0,0,0,0.03);
+            border-radius: 20px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            font-size: 11px;
+            padding: 4px 8px;
+            background: rgba(59, 130, 246, 0.08);
+            color: #3b82f6;
+            border-radius: 6px;
+        }
+
+        .product-action {
+            margin-top: auto;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             background: var(--btn-bg);
             color: var(--btn-text);
             text-decoration: none;
-            padding: 18px;
-            border-radius: 16px;
+            padding: 14px;
+            border-radius: 12px;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 14px;
             transition: all 0.2s;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            margin-bottom: 24px;
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            width: 100%;
         }
 
-        .primary-btn:hover {
+        .action-btn:hover {
             transform: scale(1.02);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        /* 按钮光效 */
-        .primary-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: rotate(45deg) translate(-100%, -100%);
-            transition: transform 0.6s;
-        }
-
-        .primary-btn:hover::after {
-            transform: rotate(45deg) translate(100%, 100%);
-        }
-
-        .mirrors-list {
+        .download-links {
             display: flex;
             flex-direction: column;
+            gap: 10px;
+        }
+
+        .download-main {
+            flex: 1;
+        }
+
+        .download-alt {
+            display: flex;
             gap: 8px;
         }
 
-        .mirror-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(0,0,0,0.03);
-            border-radius: 12px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 13px;
-            transition: all 0.2s;
-        }
-
-        .mirror-link:hover {
-            background: rgba(0, 0, 0, 0.03);
-            color: var(--text-main);
-            border-color: rgba(0, 0, 0, 0.08);
-        }
-
-        .mirror-badge {
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: rgba(0, 0, 0, 0.05);
-            color: var(--text-muted);
-        }
-
-        .file-meta {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            font-size: 12px;
-            color: #94a3b8;
-            text-align: center;
-            font-family: monospace;
-        }
-
-        /* 右侧功能区域 */
-        .features-card {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            height: 100%;
-        }
-
-        @media (max-width: 600px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .feature-item {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid transparent;
-            padding: 20px;
-            border-radius: 16px;
-            transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .feature-item:hover {
-            background: #fff;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transform: translateY(-2px);
-        }
-
-        .feature-icon-wrapper {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
+        .alt-link {
+            flex: 1;
+            padding: 8px 10px;
             background: #f1f5f9;
-            color: #334155;
-            border: 1px solid rgba(0,0,0,0.02);
-        }
-
-        .feature-title {
-            font-weight: 600;
-            font-size: 15px;
             color: var(--text-main);
-        }
-
-        .feature-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        /* 页脚 */
-        footer {
-            margin-top: auto;
-            padding-top: 60px;
-            padding-bottom: 20px;
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-muted);
-            animation: fadeIn 1s ease-out 0.5s backwards;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
             text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.2s;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s;
         }
 
-        .footer-links a:hover {
+        .alt-link:hover {
+            background: #e2e8f0;
+        }
+
+        .action-btn.secondary {
+            background: #f1f5f9;
             color: var(--text-main);
         }
 
@@ -379,12 +284,9 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.2s ease-out;
         }
 
-        .qr-modal.show {
-            display: flex;
-        }
+        .qr-modal.show { display: flex; }
 
         .qr-modal-content {
             background: #fff;
@@ -424,14 +326,25 @@
             border-radius: 10px;
             font-size: 14px;
             cursor: pointer;
-            transition: transform 0.2s;
         }
 
-        .qr-close-btn:hover {
-            transform: scale(1.05);
+        footer {
+            margin-top: 60px;
+            padding-bottom: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
         }
 
-        /* 动画定义 */
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--text-main); }
+
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -441,111 +354,97 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
     </style>
 </head>
 <body>
-
-    <!-- 动态背景光效 -->
     <div class="ambient-light"></div>
 
     <div class="container">
-        
         <header>
-            <div class="logo-box">🐯</div>
-            <h1>虎哥截图</h1>
-            <p class="subtitle">极致生产力体验。<br>本地 OCR、多引擎翻译、录屏，一气呵成。</p>
-            <div class="pill-badge">
-                <span></span> v2.1.8 Stable
-            </div>
+            <div class="logo-box">🚀</div>
+            <h1>虎哥飞行空间</h1>
+            <p class="subtitle">飞行员的数字工具箱，让工作更高效，学习更轻松</p>
         </header>
 
-        <div class="bento-grid">
-            <!-- 左侧：下载核心区 -->
-            <div class="card download-card">
-                <div>
-                    <div class="section-title">获取软件</div>
-                    <!-- 主要下载按钮 -->
-                    <a href="https://gh.ddlc.top/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.1.7/HuGeScreenshot-2.1.7.exe" class="primary-btn">
-                        <span>立即下载</span>
-                        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                    </a>
-
-                    <!-- 镜像列表 -->
-                    <div class="section-title" style="margin-top: 30px; margin-bottom: 12px; font-size: 12px;">备用下载源</div>
-                    <div class="mirrors-list">
-                        <a href="https://ghfast.top/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.1.7/HuGeScreenshot-2.1.7.exe" class="mirror-link">
-                            <span>ghfast.top</span>
-                            <span class="mirror-badge">备用</span>
-                        </a>
-                        <a href="https://ghproxy.cc/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.1.7/HuGeScreenshot-2.1.7.exe" class="mirror-link">
-                            <span>ghproxy.cc</span>
-                            <span class="mirror-badge">备用</span>
-                        </a>
-                        <a href="https://github.com/wangwingzero/hugescreenshot-releases/releases" target="_blank" class="mirror-link">
-                            <span>GitHub Releases</span>
-                            <span class="mirror-badge">原站</span>
-                        </a>
-                    </div>
+        <div class="products-grid">
+            <!-- 虎哥截图 -->
+            <div class="product-card">
+                <div class="product-icon screenshot">🐯</div>
+                <div class="product-title">虎哥截图</div>
+                <div class="product-platform">Windows 桌面软件</div>
+                <div class="product-desc">
+                    极致生产力体验。本地 OCR 文字识别、多引擎翻译、Anki 制卡、录屏，一气呵成。
                 </div>
-                
-                <div class="file-meta">
-                    Windows 10+ | 64位 | ~450MB
+                <div class="product-features">
+                    <span class="feature-tag">离线 OCR</span>
+                    <span class="feature-tag">聚合翻译</span>
+                    <span class="feature-tag">Anki 制卡</span>
+                    <span class="feature-tag">录屏</span>
+                </div>
+                <div class="product-action">
+                    <div class="download-links">
+                        <a href="https://ghproxy.net/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.2.0/HuGeScreenshot-2.2.0.exe" class="action-btn download-main" data-proxy="1">
+                            加速下载 ①
+                            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                        </a>
+                        <div class="download-alt">
+                            <a href="https://cf.ghproxy.cc/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.2.0/HuGeScreenshot-2.2.0.exe" class="alt-link" data-proxy="2">加速 ②</a>
+                            <a href="https://ghfast.top/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.2.0/HuGeScreenshot-2.2.0.exe" class="alt-link" data-proxy="3">加速 ③</a>
+                            <a href="https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.2.0/HuGeScreenshot-2.2.0.exe" class="alt-link" data-proxy="github">GitHub</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- 右侧：功能展示区 -->
-            <div class="card features-card">
-                <div class="section-title">功能概览</div>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon-wrapper">📸</div>
-                        <div>
-                            <div class="feature-title">截图标注</div>
-                            <div class="feature-desc">像素级精确截图，支持丰富的贴图与标注工具。</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon-wrapper">⚡️</div>
-                        <div>
-                            <div class="feature-title">离线 OCR</div>
-                            <div class="feature-desc">无需联网，瞬间提取图片中的文字信息。</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon-wrapper">🌍</div>
-                        <div>
-                            <div class="feature-title">聚合翻译</div>
-                            <div class="feature-desc">集成多个高精度翻译引擎，智能降级切换。</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon-wrapper">🧠</div>
-                        <div>
-                            <div class="feature-title">Anki 助手</div>
-                            <div class="feature-desc">不仅是截图，更是一键制作记忆卡的学习利器。</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon-wrapper">🎥</div>
-                        <div>
-                            <div class="feature-title">高清录屏</div>
-                            <div class="feature-desc">支持 H.264 编码，轻量级区域录制解决方案。</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon-wrapper">📑</div>
-                        <div>
-                            <div class="feature-title">Word排版</div>
-                            <div class="feature-desc">针对 Word/WPS 的一键格式化辅助。</div>
-                        </div>
-                    </div>
+            <!-- 飞行工具箱 -->
+            <div class="product-card">
+                <div class="product-icon flight">✈️</div>
+                <div class="product-title">飞行工具箱</div>
+                <div class="product-platform">微信小程序</div>
+                <div class="product-desc">
+                    专为商业航线飞行员设计，离线优先。收录 31 国 ATC 录音、7400+ 机场、1400+ 份 CCAR 规章，驾驶舱内也能用。
+                </div>
+                <div class="product-features">
+                    <span class="feature-tag">ATC 录音</span>
+                    <span class="feature-tag">飞行计算器</span>
+                    <span class="feature-tag">机场数据库</span>
+                    <span class="feature-tag">CCAR 规章</span>
+                    <span class="feature-tag">离线可用</span>
+                </div>
+                <div class="product-action">
+                    <button class="action-btn secondary" onclick="showQR('flight')">
+                        扫码使用
+                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 历史时空图 -->
+            <div class="product-card">
+                <div class="product-icon history">🗺️</div>
+                <div class="product-title">历史时空图</div>
+                <div class="product-platform">微信小程序</div>
+                <div class="product-desc">
+                    创新的时空可视化历史学习工具。在地图上探索 27 个历史时期，支持中国历史和世界历史双视角，配有足迹打卡和学习统计。
+                </div>
+                <div class="product-features">
+                    <span class="feature-tag">交互地图</span>
+                    <span class="feature-tag">时间轴导航</span>
+                    <span class="feature-tag">学习笔记</span>
+                    <span class="feature-tag">足迹打卡</span>
+                    <span class="feature-tag">人物画廊</span>
+                </div>
+                <div class="product-action">
+                    <button class="action-btn secondary" onclick="showQR('history')">
+                        扫码使用
+                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -554,37 +453,61 @@
             <div class="footer-links">
                 <a href="https://github.com/wangwingzero/hugescreenshot-releases" target="_blank">GitHub</a>
                 <span>·</span>
-                <a href="javascript:void(0)" onclick="showQRCode()">反馈问题</a>
+                <a href="javascript:void(0)" onclick="showQR('contact')">联系作者</a>
             </div>
-            <p style="margin-top: 12px;">© 2024-2026 虎哥截图 Design. All rights reserved.</p>
+            <p style="margin-top: 12px;">© 2024-2026 虎哥飞行空间. All rights reserved.</p>
+            <p style="margin-top: 8px; font-size: 12px;">
+                <a href="https://beian.miit.gov.cn/" target="_blank" style="color: var(--text-muted);">沪ICP备XXXXXXXX号</a>
+            </p>
         </footer>
+    </div>
 
-        <!-- 二维码弹窗 -->
-        <div class="qr-modal" id="qrModal" onclick="onModalClick(event)">
-            <div class="qr-modal-content" onclick="event.stopPropagation()">
-                <h3>扫码反馈问题</h3>
-                <img src="QRcode.png" alt="反馈二维码">
-                <p>微信扫一扫，添加好友反馈</p>
-                <button class="qr-close-btn" onclick="hideQRCode()">关闭</button>
-            </div>
+    <!-- 二维码弹窗 -->
+    <div class="qr-modal" id="qrModal" onclick="hideQR(event)">
+        <div class="qr-modal-content" onclick="event.stopPropagation()">
+            <h3 id="qrTitle">扫码使用</h3>
+            <img id="qrImage" src="" alt="二维码">
+            <p id="qrDesc">微信扫一扫</p>
+            <button class="qr-close-btn" onclick="hideQR()">关闭</button>
         </div>
+    </div>
 
-        <script>
-            function showQRCode() {
-                document.getElementById('qrModal').classList.add('show');
+    <script>
+        var qrData = {
+            flight: {
+                title: '飞行工具箱',
+                image: 'flight-tools-qr.jpg',
+                desc: '微信扫一扫，打开小程序'
+            },
+            history: {
+                title: '历史时空图',
+                image: 'history-map-qr.jpg',
+                desc: '微信扫一扫，打开小程序'
+            },
+            contact: {
+                title: '联系作者',
+                image: 'QRcode.png',
+                desc: '微信扫一扫，添加好友'
             }
-            function hideQRCode() {
+        };
+
+        function showQR(type) {
+            var data = qrData[type];
+            document.getElementById('qrTitle').textContent = data.title;
+            document.getElementById('qrImage').src = data.image;
+            document.getElementById('qrDesc').textContent = data.desc;
+            document.getElementById('qrModal').classList.add('show');
+        }
+
+        function hideQR(event) {
+            if (!event || event.target === document.getElementById('qrModal')) {
                 document.getElementById('qrModal').classList.remove('show');
             }
-            function onModalClick(event) {
-                if (event.target === document.getElementById('qrModal')) {
-                    hideQRCode();
-                }
-            }
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') hideQRCode();
-            });
-        </script>
-    </div>
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') hideQR();
+        });
+    </script>
 </body>
 </html>

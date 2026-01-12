@@ -9,7 +9,7 @@
  * 1. 在 Cloudflare Dashboard 创建 Worker
  * 2. 粘贴此代码
  * 3. 添加环境变量 SUPABASE_HOST (例如: xxxxx.supabase.co)
- * 4. 添加路由: huge.21912101.xyz/* → 此 Worker
+ * 4. 添加路由: hudawang.cn/* → 此 Worker
  * 5. 确保 Pages 项目绑定到不同的域名或使用 Service Binding
  */
 

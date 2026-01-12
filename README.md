@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.1.8-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-2.2.0-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/platform-Windows-lightgrey.svg" alt="Platform">
   <img src="https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-red.svg" alt="License">
 </p>
@@ -81,7 +81,7 @@
 
 | 下载源 | 链接 | 说明 |
 |--------|------|------|
-| 🇨🇳 **国内高速** | [点击下载 v2.1.8](https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.1.8/HuGeScreenshot-2.1.8.exe) | 🚀 推荐，镜像加速 |
+| 🇨🇳 **国内高速** | [点击下载 v2.2.0](https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.2.0/HuGeScreenshot-2.2.0.exe) | 🚀 推荐，镜像加速 |
 | 🌐 GitHub | [Releases](https://github.com/wangwingzero/hugescreenshot-releases/releases) | 海外用户 |
 
 下载 `HuGeScreenshot-x.x.x.exe` 即可使用。
