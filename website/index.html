@@ -1,14 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="铏庡摜鎴浘 - Windows 妗岄潰鎴浘宸ュ叿锛屾彁渚?OCR 鏂囧瓧璇嗗埆銆佸寮曟搸缈昏瘧銆丄nki 鍒跺崱銆佸綍灞忕瓑鍔熻兘">
+    <meta name="description" content="虎哥截图 - Windows 桌面截图工具，提供 OCR 文字识别、多引擎翻译、Anki 制卡、录屏等功能">
     <meta name="theme-color" content="#f8fafc">
-    <title>铏庡摜鎴浘 - 鏋佽嚧鐢熶骇鍔涗綋楠?/title>
+    <title>虎哥截图 - 极致生产力体验</title>
     <script>
-        // 妫€娴嬮偖绠辩‘璁ゅ洖璋冿紝濡傛灉鏄?signup 绫诲瀷鍒欒烦杞埌纭椤甸潰
-        // 鏀惧湪 head 涓‘淇濆湪椤甸潰娓叉煋鍓嶆墽琛?        (function() {
+        // 检测邮箱确认回调，如果是 signup 类型则跳转到确认页面
+        // 放在 head 中确保在页面渲染前执行
+        (function() {
             var hash = window.location.hash;
             if (hash && hash.indexOf('type=signup') !== -1) {
                 window.location.replace('confirm.html' + hash);
@@ -17,7 +18,7 @@
     </script>
     <style>
         :root {
-            /* 娴呰壊涓婚鍙橀噺 */
+            /* 浅色主题变量 */
             --bg-body: #f8fafc;
             --card-bg: rgba(255, 255, 255, 0.65);
             --card-border: rgba(0, 0, 0, 0.06);
@@ -47,7 +48,7 @@
             position: relative;
         }
 
-        /* 鑳屾櫙娴佸厜鍔ㄧ敾 - 娴呰壊鐗堣皟鏁翠负鏇存煍鍜岀殑鑹插僵 */
+        /* 背景流光动画 - 浅色版调整为更柔和的色彩 */
         .ambient-light {
             position: fixed;
             top: 0;
@@ -73,7 +74,7 @@
             align-items: center;
         }
 
-        /* 澶撮儴璁捐 */
+        /* 头部设计 */
         header {
             text-align: center;
             margin-top: 40px;
@@ -84,7 +85,7 @@
         .logo-box {
             width: 96px;
             height: 96px;
-            /* 娴呰壊妯″紡涓嬩繚鎸佹繁鑹?Logo 鐩掞紝鍒堕€犺瑙夐敋鐐?*/
+            /* 浅色模式下保持深色 Logo 盒，制造视觉锚点 */
             background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
             border-radius: 24px;
             display: flex;
@@ -114,7 +115,7 @@
             font-weight: 800;
             margin-bottom: 12px;
             letter-spacing: -1px;
-            /* 娴呰壊妯″紡涓嬬殑娓愬彉瀛?*/
+            /* 浅色模式下的渐变字 */
             background: linear-gradient(to bottom, #0f172a, #334155);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -149,7 +150,7 @@
             box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
         }
 
-        /* Bento Grid 甯冨眬 */
+        /* Bento Grid 布局 */
         .bento-grid {
             display: grid;
             grid-template-columns: 320px 1fr;
@@ -164,14 +165,14 @@
             }
         }
 
-        /* 鍗＄墖閫氱敤鏍峰紡 */
+        /* 卡片通用样式 */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 24px;
             padding: 30px;
             backdrop-filter: blur(20px);
-            /* 娴呰壊妯″紡涓嬬殑鎶曞奖鏇存煍鍜?*/
+            /* 浅色模式下的投影更柔和 */
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
         }
@@ -181,7 +182,7 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
         }
 
-        /* 宸︿晶涓嬭浇鍖哄煙 */
+        /* 左侧下载区域 */
         .download-card {
             display: flex;
             flex-direction: column;
@@ -221,7 +222,7 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
         }
 
-        /* 鎸夐挳鍏夋晥 */
+        /* 按钮光效 */
         .primary-btn::after {
             content: '';
             position: absolute;
@@ -282,7 +283,7 @@
             font-family: monospace;
         }
 
-        /* 鍙充晶鍔熻兘鍖哄煙 */
+        /* 右侧功能区域 */
         .features-card {
             display: flex;
             flex-direction: column;
@@ -343,7 +344,7 @@
             line-height: 1.4;
         }
 
-        /* 椤佃剼 */
+        /* 页脚 */
         footer {
             margin-top: auto;
             padding-top: 60px;
@@ -365,7 +366,7 @@
             color: var(--text-main);
         }
 
-        /* 浜岀淮鐮佸脊绐?*/
+        /* 二维码弹窗 */
         .qr-modal {
             display: none;
             position: fixed;
@@ -430,7 +431,7 @@
             transform: scale(1.05);
         }
 
-        /* 鍔ㄧ敾瀹氫箟 */
+        /* 动画定义 */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -449,47 +450,47 @@
 </head>
 <body>
 
-    <!-- 鍔ㄦ€佽儗鏅厜鏁?-->
+    <!-- 动态背景光效 -->
     <div class="ambient-light"></div>
 
     <div class="container">
         
         <header>
-            <div class="logo-box">馃惎</div>
-            <h1>铏庡摜鎴浘</h1>
-            <p class="subtitle">鏋佽嚧鐢熶骇鍔涗綋楠屻€?br>鏈湴 OCR銆佸寮曟搸缈昏瘧銆佸綍灞忥紝涓€姘斿懙鎴愩€?/p>
+            <div class="logo-box">🐯</div>
+            <h1>虎哥截图</h1>
+            <p class="subtitle">极致生产力体验。<br>本地 OCR、多引擎翻译、录屏，一气呵成。</p>
             <div class="pill-badge">
                 <span></span> v2.1.6 Stable
             </div>
         </header>
 
         <div class="bento-grid">
-            <!-- 宸︿晶锛氫笅杞芥牳蹇冨尯 -->
+            <!-- 左侧：下载核心区 -->
             <div class="card download-card">
                 <div>
-                    <div class="section-title">鑾峰彇杞欢</div>
-                    <!-- 涓昏涓嬭浇鎸夐挳 -->
+                    <div class="section-title">获取软件</div>
+                    <!-- 主要下载按钮 -->
                     <a href="https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.1.6/HuGeScreenshot-2.1.6.exe" class="primary-btn">
-                        <span>绔嬪嵆涓嬭浇</span>
+                        <span>立即下载</span>
                         <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
                     </a>
 
-                    <!-- 闀滃儚鍒楄〃 -->
-                    <div class="section-title" style="margin-top: 30px; margin-bottom: 12px; font-size: 12px;">澶囩敤涓嬭浇婧?/div>
+                    <!-- 镜像列表 -->
+                    <div class="section-title" style="margin-top: 30px; margin-bottom: 12px; font-size: 12px;">备用下载源</div>
                     <div class="mirrors-list">
                         <a href="https://ghfast.top/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.1.6/HuGeScreenshot-2.1.6.exe" class="mirror-link">
                             <span>ghfast.top</span>
-                            <span class="mirror-badge">澶囩敤</span>
+                            <span class="mirror-badge">备用</span>
                         </a>
                         <a href="https://ghproxy.cc/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.1.6/HuGeScreenshot-2.1.6.exe" class="mirror-link">
                             <span>ghproxy.cc</span>
-                            <span class="mirror-badge">澶囩敤</span>
+                            <span class="mirror-badge">备用</span>
                         </a>
                         <a href="https://github.com/wangwingzero/hugescreenshot-releases/releases" target="_blank" class="mirror-link">
                             <span>GitHub Releases</span>
-                            <span class="mirror-badge">鍘熺珯</span>
+                            <span class="mirror-badge">原站</span>
                         </a>
                     </div>
                 </div>
@@ -499,50 +500,50 @@
                 </div>
             </div>
 
-            <!-- 鍙充晶锛氬姛鑳藉睍绀哄尯 -->
+            <!-- 右侧：功能展示区 -->
             <div class="card features-card">
-                <div class="section-title">鍔熻兘姒傝</div>
+                <div class="section-title">功能概览</div>
                 <div class="features-grid">
                     <div class="feature-item">
-                        <div class="feature-icon-wrapper">馃摳</div>
+                        <div class="feature-icon-wrapper">📸</div>
                         <div>
-                            <div class="feature-title">鎴浘鏍囨敞</div>
-                            <div class="feature-desc">鍍忕礌绾х簿纭埅鍥撅紝鏀寔涓板瘜鐨勮创鍥句笌鏍囨敞宸ュ叿銆?/div>
+                            <div class="feature-title">截图标注</div>
+                            <div class="feature-desc">像素级精确截图，支持丰富的贴图与标注工具。</div>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-icon-wrapper">鈿★笍</div>
+                        <div class="feature-icon-wrapper">⚡️</div>
                         <div>
-                            <div class="feature-title">绂荤嚎 OCR</div>
-                            <div class="feature-desc">鏃犻渶鑱旂綉锛岀灛闂存彁鍙栧浘鐗囦腑鐨勬枃瀛椾俊鎭€?/div>
+                            <div class="feature-title">离线 OCR</div>
+                            <div class="feature-desc">无需联网，瞬间提取图片中的文字信息。</div>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-icon-wrapper">馃實</div>
+                        <div class="feature-icon-wrapper">🌍</div>
                         <div>
-                            <div class="feature-title">鑱氬悎缈昏瘧</div>
-                            <div class="feature-desc">闆嗘垚 Google銆佹湁閬撶瓑澶氫釜楂樼簿搴︾炕璇戝紩鎿庛€?/div>
+                            <div class="feature-title">聚合翻译</div>
+                            <div class="feature-desc">集成 Google、有道等多个高精度翻译引擎。</div>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-icon-wrapper">馃</div>
+                        <div class="feature-icon-wrapper">🧠</div>
                         <div>
-                            <div class="feature-title">Anki 鍔╂墜</div>
-                            <div class="feature-desc">涓嶄粎鏄埅鍥撅紝鏇存槸涓€閿埗浣滆蹇嗗崱鐨勫涔犲埄鍣ㄣ€?/div>
+                            <div class="feature-title">Anki 助手</div>
+                            <div class="feature-desc">不仅是截图，更是一键制作记忆卡的学习利器。</div>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-icon-wrapper">馃帴</div>
+                        <div class="feature-icon-wrapper">🎥</div>
                         <div>
-                            <div class="feature-title">楂樻竻褰曞睆</div>
-                            <div class="feature-desc">鏀寔 H.264 缂栫爜锛岃交閲忕骇鍖哄煙褰曞埗瑙ｅ喅鏂规銆?/div>
+                            <div class="feature-title">高清录屏</div>
+                            <div class="feature-desc">支持 H.264 编码，轻量级区域录制解决方案。</div>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-icon-wrapper">馃搼</div>
+                        <div class="feature-icon-wrapper">📑</div>
                         <div>
-                            <div class="feature-title">Word鎺掔増</div>
-                            <div class="feature-desc">閽堝 Word/WPS 鐨勪竴閿牸寮忓寲杈呭姪銆?/div>
+                            <div class="feature-title">Word排版</div>
+                            <div class="feature-desc">针对 Word/WPS 的一键格式化辅助。</div>
                         </div>
                     </div>
                 </div>
@@ -552,19 +553,19 @@
         <footer>
             <div class="footer-links">
                 <a href="https://github.com/wangwingzero/hugescreenshot-releases" target="_blank">GitHub</a>
-                <span>路</span>
-                <a href="javascript:void(0)" onclick="showQRCode()">鍙嶉闂</a>
+                <span>·</span>
+                <a href="javascript:void(0)" onclick="showQRCode()">反馈问题</a>
             </div>
-            <p style="margin-top: 12px;">漏 2024-2026 铏庡摜鎴浘 Design. All rights reserved.</p>
+            <p style="margin-top: 12px;">© 2024-2026 虎哥截图 Design. All rights reserved.</p>
         </footer>
 
-        <!-- 浜岀淮鐮佸脊绐?-->
+        <!-- 二维码弹窗 -->
         <div class="qr-modal" id="qrModal" onclick="onModalClick(event)">
             <div class="qr-modal-content" onclick="event.stopPropagation()">
-                <h3>鎵爜鍙嶉闂</h3>
-                <img src="QRcode.png" alt="鍙嶉浜岀淮鐮?>
-                <p>寰俊鎵竴鎵紝娣诲姞濂藉弸鍙嶉</p>
-                <button class="qr-close-btn" onclick="hideQRCode()">鍏抽棴</button>
+                <h3>扫码反馈问题</h3>
+                <img src="QRcode.png" alt="反馈二维码">
+                <p>微信扫一扫，添加好友反馈</p>
+                <button class="qr-close-btn" onclick="hideQRCode()">关闭</button>
             </div>
         </div>
 
