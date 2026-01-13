@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="虎哥截图使用说明 - 功能介绍、快捷键、配置指南">
+    <meta name="theme-color" content="#f8fafc">
+    <title>虎哥截图 - 使用说明</title>
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(0, 0, 0, 0.06);
+            --primary: #f59e0b;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Roboto", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 30px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: var(--text-main); }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .version {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(245, 158, 11, 0.1);
+            color: #d97706;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 16px 0 8px;
+            color: var(--text-main);
+        }
+
+        p, li {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        li { margin: 6px 0; }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+
+        .feature-item {
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 10px;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .feature-item span {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--text-main);
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        td { color: var(--text-muted); }
+
+        code {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "SF Mono", Consolas, monospace;
+            font-size: 13px;
+        }
+
+        .tip {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 3px solid #f59e0b;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .tip strong {
+            color: #d97706;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .steps {
+            counter-reset: step;
+        }
+
+        .step {
+            display: flex;
+            gap: 12px;
+            margin: 12px 0;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 3px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            返回首页
+        </a>
+
+        <header>
+            <div class="logo">🐯</div>
+            <h1>虎哥截图</h1>
+            <span class="version">v2.2.1</span>
+        </header>
+
+        <!-- 快速开始 -->
+        <div class="section">
+            <h2>🚀 快速开始</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">下载 EXE 文件</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">双击运行（首次启动需要几秒钟）</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">按 <code>Alt+A</code> 开始截图</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-content">系统托盘会显示虎哥截图图标</div>
+                </div>
+            </div>
+            <div class="tip">
+                <strong>⚠️ 重要提示</strong>
+                请勿修改 EXE 文件名，否则自动更新功能可能无法正常工作。
+            </div>
+        </div>
+
+        <!-- 功能特性 -->
+        <div class="section">
+            <h2>✨ 功能特性</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>📸 截图功能</strong>
+                    <span>全屏/区域选择、窗口检测、多显示器</span>
+                </div>
+                <div class="feature-item">
+                    <strong>🎨 标注工具</strong>
+                    <span>矩形、椭圆、箭头、画笔、文字、马赛克</span>
+                </div>
+                <div class="feature-item">
+                    <strong>🔤 OCR 识别</strong>
+                    <span>本地离线识别，支持 Intel/AMD CPU</span>
+                </div>
+                <div class="feature-item">
+                    <strong>🌐 翻译功能</strong>
+                    <span>多引擎支持，自动降级备用</span>
+                </div>
+                <div class="feature-item">
+                    <strong>📌 贴图功能</strong>
+                    <span>截图钉在桌面，支持透明度和缩放</span>
+                </div>
+                <div class="feature-item">
+                    <strong>📚 Anki 制卡</strong>
+                    <span>与 AnkiConnect 集成，一键制卡</span>
+                </div>
+                <div class="feature-item">
+                    <strong>🎬 录屏功能</strong>
+                    <span>区域/全屏录制，H.264 编码</span>
+                </div>
+                <div class="feature-item">
+                    <strong>🖼️ 图片拼接</strong>
+                    <span>多张截图垂直/水平拼接</span>
+                </div>
+                <div class="feature-item">
+                    <strong>📜 CAAC 规章</strong>
+                    <span>在线搜索民航规章，支持 PDF 下载</span>
+                </div>
+                <div class="feature-item">
+                    <strong>📝 网页转 Markdown</strong>
+                    <span>智能反爬虫处理</span>
+                </div>
+                <div class="feature-item">
+                    <strong>📄 Word排版</strong>
+                    <span>符合党政机关公文格式标准</span>
+                </div>
+                <div class="feature-item">
+                    <strong>🔄 自动更新</strong>
+                    <span>启动时自动检查新版本</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 快捷键 -->
+        <div class="section">
+            <h2>⌨️ 快捷键</h2>
+            <table>
+                <tr><th>快捷键</th><th>功能</th></tr>
+                <tr><td><code>Alt+A</code></td><td>开始截图</td></tr>
+                <tr><td><code>Esc</code></td><td>取消截图 / 退出模式</td></tr>
+                <tr><td><code>Enter</code></td><td>确认截图</td></tr>
+                <tr><td><code>Ctrl+C</code></td><td>复制到剪贴板</td></tr>
+                <tr><td><code>Ctrl+S</code></td><td>保存到文件</td></tr>
+            </table>
+        </div>
+
+        <!-- 配置 -->
+        <div class="section">
+            <h2>🔧 配置</h2>
+            <p>配置文件位置：<code>~/.screenshot_tool/config.json</code></p>
+            <p style="margin-top: 8px;">支持便携模式：将 <code>config.json</code> 放在程序同目录下即可。</p>
+        </div>
+
+        <!-- 订阅说明 -->
+        <div class="section">
+            <h2>👤 账户与订阅</h2>
+            <ul>
+                <li><strong>免费版</strong>：基础功能 + 每日限制</li>
+                <li><strong>终身 VIP</strong>：解锁所有高级功能，无使用限制</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>© 2024-2026 虎哥飞行空间 · <a href="index.html">返回首页</a></p>
+        </footer>
+    </div>
+</body>
+</html>
