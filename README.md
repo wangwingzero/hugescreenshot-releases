@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.4.0-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-2.6.0-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/platform-Windows-lightgrey.svg" alt="Platform">
   <img src="https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-red.svg" alt="License">
 </p>
@@ -67,6 +67,19 @@
 - 一键格式化 Word/WPS 文档
 - 符合《党政机关公文格式》国家标准
 
+### 🖱️ 鼠标高亮
+- 演示模式，突出显示鼠标位置
+- 支持光圈、聚光灯、指针放大、点击涟漪效果
+
+### 🔧 极简工具栏
+- 浮动快捷键窗口
+- 可拖动、可置顶
+- 快速访问常用功能
+
+### ⏰ 系统工具
+- 预约关机功能
+- 支持快捷时间选择
+
 ### 🔄 自动更新
 - 启动时自动检查新版本
 - 支持增量更新（只下载变更文件）
@@ -82,7 +95,7 @@
 
 | 下载源 | 链接 | 说明 |
 |--------|------|------|
-| 🇨🇳 **国内高速** | [点击下载 v2.4.0](https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.4.0/HuGeScreenshot-2.4.0-Setup.exe) | 🚀 推荐，镜像加速 |
+| 🇨🇳 **国内高速** | [点击下载 v2.6.0](https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.6.0/HuGeScreenshot-2.6.0-Setup.exe) | 🚀 推荐，镜像加速 |
 | 🌐 GitHub | [Releases](https://github.com/wangwingzero/hugescreenshot-releases/releases) | 海外用户 |
 
 下载 `HuGeScreenshot-x.x.x-Setup.exe` 安装包即可使用。
