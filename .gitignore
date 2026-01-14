@@ -1,0 +1,23 @@
+# 忽略大文件（安装包通过 GitHub Releases 发布，不要提交到仓库）
+*.exe
+*.msi
+*.zip
+*.7z
+*.rar
+
+# 忽略清单文件（通过 GitHub Releases 发布）
+manifest.json
+
+# Python
+__pycache__/
+*.py[cod]
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
