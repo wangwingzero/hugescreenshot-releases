@@ -1,9 +1,12 @@
 # 忽略大文件（安装包通过 GitHub Releases 发布，不要提交到仓库）
-*.exe
+# *.exe  # 改用 Git LFS 管理
 *.msi
 *.zip
 *.7z
 *.rar
+
+# 允许 releases 目录下的安装包（通过 Git LFS 管理）
+!releases/*.exe
 
 # 忽略清单文件（通过 GitHub Releases 发布）
 manifest.json
