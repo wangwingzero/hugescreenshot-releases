@@ -170,12 +170,14 @@ def get_svg_icon(emoji: str) -> str:
 def generate_feature_html(feature: Feature) -> str:
     """生成单个功能特性的 HTML"""
     svg = get_svg_icon(feature.icon)
+    # 处理描述中的 `code` 标记
+    description = re.sub(r'`([^`]+)`', r'<code>\1</code>', feature.description)
     return f'''                <div class="feature-item">
                     <strong>
                         {svg}
                         {feature.title}
                     </strong>
-                    <span>{feature.description}</span>
+                    <span>{description}</span>
                 </div>'''
 
 
