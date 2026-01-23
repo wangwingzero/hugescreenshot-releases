@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.9.0-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-2.9.1-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/platform-Windows-lightgrey.svg" alt="Platform">
   <img src="https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-red.svg" alt="License">
 </p>
@@ -22,7 +22,7 @@
 - 全屏截图 / 区域选择
 - 智能窗口检测
 - 多显示器支持
-- 全局热键（默认 `Ctrl+X`）
+- 全局热键（默认 `Alt+X`）
 
 ### 🎨 标注工具
 - 矩形、椭圆、箭头、直线
@@ -95,7 +95,7 @@
 
 | 下载源 | 链接 | 说明 |
 |--------|------|------|
-| 🇨🇳 **国内高速** | [点击下载 v2.9.0](https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.9.0/HuGeScreenshot-2.9.0-Setup.exe) | 🚀 推荐，镜像加速 |
+| 🇨🇳 **国内高速** | [点击下载 v2.9.1](https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.9.1/HuGeScreenshot-2.9.1-Setup.exe) | 🚀 推荐，镜像加速 |
 | 🌐 GitHub | [Releases](https://github.com/wangwingzero/hugescreenshot-releases/releases) | 海外用户 |
 
 下载 `HuGeScreenshot-x.x.x-Setup.exe` 安装包即可使用。
@@ -108,7 +108,7 @@
 
 1. 下载安装包并运行
 2. 按照向导完成安装
-3. 默认热键 `Ctrl+X` 开始截图
+3. 默认热键 `Alt+X` 开始截图
 4. 系统托盘会显示虎哥截图图标
 
 ---
@@ -117,7 +117,7 @@
 
 | 快捷键 | 功能 |
 |--------|------|
-| `Ctrl+X` | 开始截图 |
+| `Alt+X` | 开始截图 |
 | `Esc` | 取消截图 / 退出模式 |
 | `Enter` | 确认截图 |
 | `Ctrl+C` | 复制到剪贴板 |
