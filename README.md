@@ -1,4 +1,4 @@
-﻿![1768063517508](image/README-public/1768063517508.png)# 虎哥截图 (HuGe Screenshot)
+![1768063517508](image/README-public/1768063517508.png)# 虎哥截图 (HuGe Screenshot)
 
 <p align="center">
   <img src="resources/虎哥截图.ico" alt="虎哥截图" width="128" height="128">
@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.9.2-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-2.10.0-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/platform-Windows-lightgrey.svg" alt="Platform">
   <img src="https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-red.svg" alt="License">
 </p>
@@ -95,7 +95,7 @@
 
 | 下载源 | 链接 | 说明 |
 |--------|------|------|
-| 🇨🇳 **国内高速** | [点击下载 v2.9.2](https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.9.2/HuGeScreenshot-2.9.2-Setup.exe) | 🚀 推荐，镜像加速 |
+| 🇨🇳 **国内高速** | [点击下载 v2.10.0](https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-Setup.exe) | 🚀 推荐，镜像加速 |
 | 🌐 GitHub | [Releases](https://github.com/wangwingzero/hugescreenshot-releases/releases) | 海外用户 |
 
 下载 `HuGeScreenshot-x.x.x-Setup.exe` 安装包即可使用。
