@@ -133,6 +133,15 @@ def parse_readme(readme_path: Path) -> ReadmeContent:
         steps = re.findall(r'\d+\.\s+(.+)', quick_start_text)
         result.quick_start = steps
     
+    # 如果没有用户友好的步骤，使用默认步骤
+    if not result.quick_start:
+        result.quick_start = [
+            "下载安装包（Windows: `.exe` / macOS: `.dmg`）",
+            "按照向导完成安装（macOS 拖入 Applications 即可）",
+            "默认热键 `Alt+X`（macOS: `Option+X`）开始截图",
+            "系统托盘会显示虎哥截图图标",
+        ]
+    
     # 提取配置信息
     config_section = re.search(r'## 🔧 配置\s*(.*?)(?=\n---|\n## )', content, re.DOTALL)
     if config_section:
