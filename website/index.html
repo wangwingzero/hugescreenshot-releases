@@ -406,6 +406,65 @@
             margin-top: auto;
         }
 
+        /* 平台切换标签 */
+        .platform-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 12px;
+            background: rgba(0, 0, 0, 0.04);
+            border-radius: 10px;
+            padding: 3px;
+        }
+
+        [data-theme="dark"] .platform-tabs {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .platform-tab {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            background: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .platform-tab:hover {
+            color: var(--text-primary);
+        }
+
+        .platform-tab.active {
+            background: white;
+            color: var(--text-primary);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .platform-tab.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .platform-tab svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .platform-content {
+            display: none;
+        }
+
+        .platform-content.active {
+            display: block;
+        }
+
         /* 按钮样式 - Requirements: 10.2 (min 44x44px touch target) */
         .action-btn {
             display: flex;
@@ -896,7 +955,7 @@
                     </svg>
                 </div>
                 <div class="product-title">虎哥截图</div>
-                <div class="product-platform">Windows 桌面软件</div>
+                <div class="product-platform">Windows & macOS 桌面软件</div>
                 <div class="product-desc">
                     极致生产力体验。本地 OCR 文字识别、多引擎翻译、Anki 制卡、录屏，一气呵成。
                 </div>
@@ -908,19 +967,51 @@
                 </div>
                 <div class="product-action">
                     <div class="download-links">
-                        <a href="https://ghproxy.net/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-Setup.exe" class="action-btn primary download-main" data-proxy="1">
-                            加速下载 ①
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                <polyline points="7 10 12 15 17 10"/>
-                                <line x1="12" y1="15" x2="12" y2="3"/>
-                            </svg>
-                        </a>
-                        <div class="download-alt">
-                            <a href="https://ghfast.top/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-Setup.exe" class="alt-link" data-proxy="2">加速 ②</a>
-                            <a href="https://ghproxy.cc/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-Setup.exe" class="alt-link" data-proxy="3">加速 ③</a>
-                            <a href="https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-Setup.exe" class="alt-link" data-proxy="github">GitHub</a>
+                        <!-- 平台切换 -->
+                        <div class="platform-tabs" id="platformTabs">
+                            <button class="platform-tab active" data-platform="windows" onclick="switchPlatform('windows')">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+                                Windows
+                            </button>
+                            <button class="platform-tab" data-platform="macos" onclick="switchPlatform('macos')">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                                macOS
+                            </button>
                         </div>
+
+                        <!-- Windows 下载 -->
+                        <div class="platform-content active" id="platform-windows">
+                            <a href="https://ghproxy.net/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-Setup.exe" class="action-btn primary download-main" data-proxy="1">
+                                加速下载 ①
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                            </a>
+                            <div class="download-alt" style="margin-top: 8px;">
+                                <a href="https://ghfast.top/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-Setup.exe" class="alt-link" data-proxy="2">加速 ②</a>
+                                <a href="https://ghproxy.cc/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-Setup.exe" class="alt-link" data-proxy="3">加速 ③</a>
+                                <a href="https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-Setup.exe" class="alt-link" data-proxy="github">GitHub</a>
+                            </div>
+                        </div>
+
+                        <!-- macOS 下载 -->
+                        <div class="platform-content" id="platform-macos">
+                            <a href="https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-macOS.dmg" class="action-btn primary download-main">
+                                下载 macOS 版
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                            </a>
+                            <div class="download-alt" style="margin-top: 8px;">
+                                <a href="https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-macOS.dmg" class="alt-link" data-proxy="github">GitHub 下载</a>
+                                <a href="https://github.com/wangwingzero/hugescreenshot-releases/releases" class="alt-link">所有版本</a>
+                            </div>
+                        </div>
+
                         <a href="guide.html" class="alt-link" style="margin-top: 4px;">
                             <svg style="width: 14px; height: 14px; vertical-align: -2px; margin-right: 4px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
@@ -1094,10 +1185,33 @@
             }
         };
 
+        // ========================================
+        // Platform Switcher - 平台切换 + OS 自动检测
+        // ========================================
+        function switchPlatform(platform) {
+            // 切换标签样式
+            document.querySelectorAll('.platform-tab').forEach(function(tab) {
+                tab.classList.toggle('active', tab.getAttribute('data-platform') === platform);
+            });
+            // 切换内容
+            document.querySelectorAll('.platform-content').forEach(function(el) {
+                el.classList.toggle('active', el.id === 'platform-' + platform);
+            });
+        }
+
+        function detectOS() {
+            var ua = navigator.userAgent || navigator.platform || '';
+            if (/Mac|iPhone|iPad|iPod/i.test(ua)) return 'macos';
+            return 'windows'; // 默认 Windows
+        }
+
         // Initialize theme on DOM ready
         document.addEventListener('DOMContentLoaded', function() {
             ThemeManager.init();
             initScrollAnimations();
+            // 自动检测 OS 并切换到对应平台
+            var os = detectOS();
+            switchPlatform(os);
         });
 
         // ========================================

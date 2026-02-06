@@ -10,7 +10,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/version-2.10.0-blue.svg" alt="Version">
-  <img src="https://img.shields.io/badge/platform-Windows-lightgrey.svg" alt="Platform">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS-lightgrey.svg" alt="Platform">
   <img src="https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-red.svg" alt="License">
 </p>
 
@@ -93,12 +93,24 @@
 
 ## 📦 下载
 
+### Windows
+
 | 下载源 | 链接 | 说明 |
 |--------|------|------|
 | 🇨🇳 **国内高速** | [点击下载 v2.10.0](https://gh-proxy.com/https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-Setup.exe) | 🚀 推荐，镜像加速 |
 | 🌐 GitHub | [Releases](https://github.com/wangwingzero/hugescreenshot-releases/releases) | 海外用户 |
 
-下载 `HuGeScreenshot-x.x.x-Setup.exe` 安装包即可使用。
+### macOS
+
+| 下载源 | 链接 | 说明 |
+|--------|------|------|
+| 🍎 **macOS DMG** | [HuGeScreenshot-2.10.0-macOS.dmg](https://github.com/wangwingzero/hugescreenshot-releases/releases/download/v2.10.0/HuGeScreenshot-2.10.0-macOS.dmg) | 支持 Intel & Apple Silicon |
+
+> ⚠️ macOS 首次打开可能提示"无法验证开发者"，请前往 **系统设置 → 隐私与安全性 → 仍要打开**。
+
+---
+
+下载对应平台的安装包即可使用。
 
 > ⚠️ **重要提示**：推荐使用安装包方式，支持增量更新。
 
