@@ -176,11 +176,23 @@ def get_svg_icon(emoji: str) -> str:
     return f'''<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{svg_content}</svg>'''
 
 
+def convert_markdown_inline(text: str) -> str:
+    """将 Markdown 行内格式转换为 HTML
+    
+    支持: **粗体** → <strong>, `代码` → <code>
+    """
+    # 先处理 **粗体**（必须在 `code` 之前，避免 code 内的 ** 被误转）
+    text = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', text)
+    # 处理 `code` 标记
+    text = re.sub(r'`([^`]+)`', r'<code>\1</code>', text)
+    return text
+
+
 def generate_feature_html(feature: Feature) -> str:
     """生成单个功能特性的 HTML"""
     svg = get_svg_icon(feature.icon)
-    # 处理描述中的 `code` 标记
-    description = re.sub(r'`([^`]+)`', r'<code>\1</code>', feature.description)
+    # 处理描述中的 Markdown 行内格式
+    description = convert_markdown_inline(feature.description)
     return f'''                <div class="feature-item">
                     <strong>
                         {svg}
@@ -197,8 +209,7 @@ def generate_shortcut_row(shortcut: Shortcut) -> str:
 
 def generate_step_html(index: int, step: str) -> str:
     """生成快速开始步骤 HTML"""
-    # 处理 `code` 标记
-    step = re.sub(r'`([^`]+)`', r'<code>\1</code>', step)
+    step = convert_markdown_inline(step)
     return f'''                <div class="step">
                     <div class="step-num">{index}</div>
                     <div class="step-content">{step}</div>
