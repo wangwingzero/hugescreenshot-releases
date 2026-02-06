@@ -24,3 +24,21 @@ __pycache__/
 
 # Windows
 Thumbs.db
+
+# SSH 私钥（敏感文件，不要提交）
+*.pem
+
+# 服务器配置文档（包含敏感信息）
+腾讯云服务器.md
+.ace-tool/
+
+# 敏感文件
+域名证书.jpg
+使用S3Drive来访问数据胶囊的数据.pdf
+
+# AI 工具配置
+.claude/
+.kiro/
+
+# Windows 系统文件
+nul
